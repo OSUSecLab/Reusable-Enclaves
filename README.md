@@ -46,7 +46,7 @@ Build the LLVM
 cd llvm-reusable-enclaves
 mkdir build
 cd build
-cmake ../
+cmake -G "Unix Makefiles" ../llvm
 make
 ```
 
