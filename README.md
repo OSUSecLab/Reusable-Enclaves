@@ -57,6 +57,25 @@ Clone the modified Intel SGX SDK
 git clone https://github.com/NSKernel/linux-sgx-san.git
 ```
 
+Prepare the building
+```
+cd linux-sgx-san
+# Follow the SDK's instruction to prepare the build
+```
+
+Manually build the IPP crypto library using our toolchain
+```
+cd external/ippcp_internal
+```
+Modify the `Makefile` to use our toolchain modifying line 81 into
+```
+cd $(IPP_SOURCE) && CC='your/llvm/build/bin/clang' CXX='your/llvm/build/bin/clang++' $(PRE_CONFIG) cmake CMakeLists.txt $(IPP_CONFIG) && cd build && make ippcp_s -j14
+```
+Build IPP crypto
+```
+make
+```
+
 Build the SDK
 ```
 cd linux-sgx-san
