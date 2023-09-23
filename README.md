@@ -46,7 +46,7 @@ Build the LLVM
 cd llvm-reusable-enclaves
 mkdir build
 cd build
-cmake -G "Unix Makefiles" ../llvm
+cmake -DLLVM_ENABLE_PROJECTS=clang -G "Unix Makefiles" ../llvm
 make
 ```
 
