@@ -183,6 +183,17 @@ New terminal 3:
 cd wow
 ./target/release/executor-san
 ```
+After attestation, when you see this
+```
+process ECDH message 2 success
+```
+Type `1` in your terminal and press Enter. You should see
+```
+DEBUG: snapshot                                                                              
+Done initialising                                                                            
+Now proceeding 
+Listening on: 127.0.0.1:9000
+```
 
 New terminal 4: Zip the encrypted WASM file
 ```
