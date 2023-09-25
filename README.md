@@ -121,6 +121,9 @@ git clone https://github.com/NSKernel/wasm-micro-runtime.git
 cd ..
 ```
 
+Edit `wasm-micro-runtime/core/shared/platform/linux-sgx/Enclave-san
+/Makefile`'s `SGX_ENCLAVE_SIGNER` and `SGX_EDGER8R` into your vanilla SGX SDK's corresponding one. Edit `TCC` and `TCXX` into your built LLVM.
+
 Build WOW and WAMR
 ```
 cargo build --manifest-path ./ow-executor-san/Cargo.toml --release --features wamr_rt
@@ -145,7 +148,7 @@ Clone the project
 git clone https://github.com/NSKernel/reusable-enclaves-dcap.git
 ```
 
-Build the project
+Use your vanilla SGX SDK to build the project
 ```
 cd reusable-enclaves-dcap
 make
@@ -200,6 +203,8 @@ New terminal 4: Zip the encrypted WASM file
 zip add.zip target/wasm32-wasi/release/examples/add.wasm.enc
 ```
 Use WSK to execute the zip file following WOW's README.
+
+Note that there is no graceful exit for the executor. You can issue a `SIGKILL` to it.
 
 ### (Optional) Step 9. Build the AoT infrastructure
 
