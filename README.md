@@ -52,6 +52,15 @@ make
 
 ### Step 2. Build the instrumented Intel SGX SDK
 
+Download and build a regular Intel SGX SDK's PSW part
+```
+https://github.com/intel/linux-sgx.git
+cd linux-sgx
+make preparation
+make deb_psw_pkg
+```
+Install the built debs.
+
 Clone the modified Intel SGX SDK
 ```
 git clone https://github.com/NSKernel/linux-sgx-san.git
@@ -73,13 +82,18 @@ cd $(IPP_SOURCE) && CC='your/llvm/build/bin/clang' CXX='your/llvm/build/bin/clan
 ```
 Build IPP crypto
 ```
+make ipp_source
 make
+```
+
+Copy `sgx_ippcp.h` to the inc folder
+```
+cp ~/linux-sgx/external/ippcp_internal/inc/sgx_ippcp.h ~/linux-sgx-san/external/ippcp_internal/inc/
 ```
 
 Build the SDK
 ```
 cd linux-sgx-san
-# Follow the SDK's instruction to prepare the build
 CC='your/llvm/build/bin/clang' CXX='your/llvm/build/bin/clang++' make sdk_install_pkg
 ```
 
