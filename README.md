@@ -56,6 +56,7 @@ Download and build a regular Intel SGX SDK's PSW part
 ```
 https://github.com/intel/linux-sgx.git
 cd linux-sgx
+git reset --hard 8abc6dd8cb44e3cef8294c508e77803ffeb8ed12
 make preparation
 make deb_psw_pkg
 ```
